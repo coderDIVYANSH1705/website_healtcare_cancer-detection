@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7e9; /* Soft green background */
+    color: #333;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #2e7d32; /* Dark green heading */
+    animation: fadeInDown 1s ease-in-out;
+}
+
+p {
+    color: #388e3c;
+    margin-top: 10px;
+}
+
+.myth-busters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.myth-fact-box {
+    background-color: #c8e6c9; /* Light green box */
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 20px 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+    animation: slideIn 1s ease;
+}
+
+.myth, .fact {
+    width: 45%;
+}
+
+.myth {
+    background-color: #f0f4c3; /* Lighter shade for myths */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.fact {
+    background-color: #aed581; /* Green fact box */
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #2e7d32;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #2e7d32;
+    font-size: 1rem;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+.myth-fact-box:hover {
+    transform: scale(1.05);
+}

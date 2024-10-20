@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navotpatti Seva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f9f0;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        /* Taskbar Styling */
+        .navbar {
+            background-color: #2C5F2D;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 15px 20px;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 5px;
+        }
+
+        .navbar a:hover {
+            background-color: #1B4D3E;
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            animation: sparkle 1.5s infinite alternate;
+        }
+
+        /* Header Section */
+        .header {
+            background-color: #2C5F2D;
+            color: #ffffff;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+            margin-top: 60px;
+        }
+
+        .header h1 {
+            font-size: 90px;
+            animation: fadeInSlide 4s ease-in-out, sparkle 1.5s infinite alternate;
+        }
+
+        /* Horizontal Scroll Section */
+        .horizontal-scroll {
+            display: flex;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            padding: 40px;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar {
+            display: none; /* Hide scrollbar */
+        }
+
+        .scroll-item {
+            flex: 0 0 80%;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+            scroll-snap-align: start;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .scroll-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Vertical Scroll Section (Stats & Graphs) */
+        .vertical-scroll {
+            padding: 40px 20px;
+            background-color: #ffffff;
+        }
+
+        .vertical-scroll h2 {
+            color: #2C5F2D;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .vertical-scroll p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Graph Container */
+        .graph-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .graph-box {
+            flex: 1 1 45%;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+        }
+
+        canvas {
+            width: 100%;
+            height: 300px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2C5F2D;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes sparkle {
+            0% { text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #00ff3c, 0 0 20px #ff9900; }
+            100% { text-shadow: 0 0 10px #ada0a0, 0 0 20px #00ffc8, 0 0 30px #00eaff, 0 0 40px #d9ff00; }
+        }
+
+        @keyframes fadeInSlide {
+            0% { opacity: 0; transform: translateY(-50%); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Taskbar -->
+    <div class="navbar">
+        <a href="report-analyser.html">REPORT ANALYSER</a>
+        <a href="http://127.0.0.1:3000/faq.html">FAQ'S</a>
+        <a href="http://127.0.0.1:3000/tips.html">TIPS</a>
+        <a href="http://127.0.0.1:3000/testimonial.html">WE4GOOD</a>
+        <a href="http://127.0.0.1:3000/we4good.html">SEVA4US</a>
+        <a href="http://127.0.0.1:3000/myth.html">MYTH VS FACT</a>
+        <a href="http://127.0.0.1:3000/bmi.html">BMI CALCULATOR</a>
+    </div>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Navotpatti Seva</h1>
+        <p>Scroll down to explore more about health and cancer awareness</p>
+    </div>
+
+    <!-- Horizontal Scroll Section with Blogs -->
+    <div class="horizontal-scroll">
+        <div class="scroll-item">
+            <h2>Understanding Cancer and Early Detection</h2>
+            <p>
+                Cancer is a disease in which some of the body’s cells grow uncontrollably and spread to other parts of the body. 
+                In India, cancer is a major public health problem, with millions diagnosed each year. Early detection plays a key role in improving survival rates. 
+                Screening, awareness, and lifestyle changes are crucial in preventing cancer or catching it in early stages...
+            </p>
+        </div>
+        <div class="scroll-item">
+            <h2>Healthcare Advancements in Cancer Treatment</h2>
+            <p>
+                Over the past decade, advancements in cancer treatment have significantly improved patient outcomes. 
+                From targeted therapies to immunotherapies, the world is witnessing a transformation in how we treat cancer. 
+                In India, access to these treatments is improving, though challenges such as affordability and access to early diagnosis remain a concern...
+            </p>
+        </div>
+        <div class="scroll-item">
+            <h2>Promoting Preventive Healthcare</h2>
+            <p>
+                Preventive healthcare focuses on maintaining health and reducing the risk of diseases such as cancer...
+                Routine check-ups, vaccinations, and a healthy lifestyle are key to preventing chronic illnesses...
+            </p>
+        </div>
+    </div>
+
+    <!-- Vertical Scroll Section with Stats & Graphs -->
+    <div class="vertical-scroll">
+        <h2>Cancer Statistics and Disease Data in India</h2>
+        <p>
+            Cancer is a significant health issue in India. According to the World Health Organization (WHO), around 1.5 million new cancer cases are diagnosed every year. 
+            Despite this, awareness and early screening programs can drastically reduce the impact of this disease...
+            The following graphs highlight the distribution of cancer cases across genders, mortality rates, and survival rates based on early diagnosis and treatments.
+            Cancer might just be one of the most feared and dreaded diseases. Globally, cancer is responsible for the death of nearly 9.5 million people in 2018. It is the second leading cause of death as per the world health organization. As per studies, in India, we see 1300 deaths due to cancer every day. These statistics are truly astonishing and scary. In the recent few decades, the number of cancer has been increasingly on the rise. So let us take a look at the meaning, causes, and types of cancer in this essay on cancer.<br>
+
+Cancer comes in many forms and types. Cancer is the collective name given to the disease where certain cells of the person’s body start dividing continuously, refusing to stop. These extra cells form when none are needed and they spread into the surrounding tissues and can even form malignant tumors. Cells may break away from such tumors and go and form tumors in other places of the patient’s body.
+
+essay on cancer
+
+Types of Cancers
+
+As we know, cancer can actually affect any part or organ of the human body. We all have come across various types of cancer – lung, blood, pancreas, stomach, skin, and so many others. Biologically, however, cancer can be divided into five types specifically – carcinoma, sarcoma, melanoma, lymphoma, leukemia.
+
+Among these, carcinomas are the most diagnosed type. These cancers originate in organs or glands such as lungs, stomach, pancreas, breast, etc. Leukemia is the cancer of the blood, and this does not form any tumors. Sarcomas start in the muscles, bones, tissues or other connective tissues of the body. Lymphomas are the cancer of the white blood cells, i.e. the lymphocytes. And finally, melanoma is when cancer arises in the pigment of the skin.
+
+Get the huge list of more than 500 Essay Topics and Ideas
+
+Causes of Cancer
+
+In most cases, we can never attribute the cause of any cancer to one single factor. The main thing that causes cancer is a substance we know as carcinogens. But how these develop or enters a person’s body will depend on many factors. We can divide the main factors into the following types – biological factors, physical factors, and lifestyle-related factors.
+
+Biological factors involve internal factors such as age, gender, genes, hereditary factors, blood type, skin type, etc. Physical factors refer to environmental exposure of any king to say X-rays, gamma rays, etc. Ad finally lifestyle-related factors refer to substances that introduced carcinogens into our body. These include tobacco, UV radiation, alcohol. smoke, etc. Next, in this essay on cancer lets learn about how we can treat cancer.
+
+Treatment of Cancer
+
+Early diagnosis and immediate medical care in cancer are of utmost importance. When diagnosed in the early stages, then the treatment becomes easier and has more chances of success. The three most common treatment plans are either surgery, radiation therapy or chemotherapy.
+
+If there is a benign tumor, then surgery is performed to remove the mass from the body, hence removing cancer from the body. In radiation therapy, we use radiation (rays) to specially target and kill the cancer cells. Chemotherapy is similar, where we inject the patient with drugs that target and kill the cancer cells. All treatment plans, however, have various side-effects. And aftercare is one of the most important aspects of cancer treatment.
+<br>
+
+        </p>
+
+        <!-- Graphs -->
+        <div class="graph-container">
+            <div class="graph-box">
+                <canvas id="cancerGenderGraph"></canvas>
+            </div>
+            <div class="graph-box">
+                <canvas id="mortalityRateGraph"></canvas>
+            </div>
+            <div class="graph-box">
+                <canvas id="earlyDetectionGraph"></canvas>
+            </div>
+            <div class="graph-box">
+                <canvas id="survivalRateGraph"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Navotpatti Seva | Empowering Lives Through Health</p>
+    </div>
+
+    <script>
+        // Graph 1: Cancer Distribution by Gender
+        var ctx1 = document.getElementById('cancerGenderGraph').getContext('2d');
+        var cancerGenderGraph = new Chart(ctx1, {
+            type: 'pie',
+            data: {
+                labels: ['Men', 'Women'],
+                datasets: [{
+                    label: 'Cancer Distribution by Gender',
+                    data: [54, 46], // Placeholder data
+                    backgroundColor: ['#FF6384', '#36A2EB']
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        // Graph 2: Cancer Mortality Rates in India
+        var ctx2 = document.getElementById('mortalityRateGraph').getContext('2d');
+        var mortalityRateGraph = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Lung', 'Breast', 'Cervical', 'Colorectal', 'Ovarian'],
+                datasets: [{
+                    label: 'Mortality Rate (%)',
+                    data: [23, 18, 15, 12, 8], // Placeholder data
+                    backgroundColor: '#FFCE56'
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        // Graph 3: Impact of Early Detection on Survival Rate
+        var ctx3 = document.getElementById('earlyDetectionGraph').getContext('2d');
+        var earlyDetectionGraph = new Chart(ctx3, {
+            type: 'line',
+            data: {
+                labels: ['Stage 1', 'Stage 2', 'Stage 3', 'Stage 4'],
+                datasets: [{
+                    label: 'Survival Rate (%)',
+                    data: [90, 75, 50, 25], // Placeholder data
+                    borderColor: '#4BC0C0',
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        // Graph 4: Cancer Survival Rates Over the Years
+        var ctx4 = document.getElementById('survivalRateGraph').getContext('2d');
+        var survivalRateGraph = new Chart(ctx4, {
+            type: 'line',
+            data: {
+                labels: ['2010', '2012', '2014', '2016', '2018', '2020', '2022'],
+                datasets: [{
+                    label: 'Survival Rate (%)',
+                    data: [60, 62, 65, 68, 70, 72, 74], // Placeholder data
+                    borderColor: '#FF6384',
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
+
+</body>
+</html>
